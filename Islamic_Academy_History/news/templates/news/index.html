@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% for item in news %}
+<div>
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.content }}</p>
+    <p>{{ item.created_at|date:"Y-m-d H:i" }}</p>
+</div>
+{% endfor %}
+</body>
+</html>
