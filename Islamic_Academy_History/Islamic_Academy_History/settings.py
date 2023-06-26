@@ -104,10 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c6c063501aa3a1d792bfdd14c4c685ea952d1ed6
 LANGUAGE_CODE = 'ru'
 
 
@@ -124,10 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-=======
-
->>>>>>> c6c063501aa3a1d792bfdd14c4c685ea952d1ed6
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

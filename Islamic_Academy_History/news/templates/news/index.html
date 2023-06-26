@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Главная</a>
+        <a class="navbar-brand" href="#">Islamic Academy History</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Админка</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">о главном</a>
+                    <a class="nav-link" href="#">добавить новость</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -32,21 +32,35 @@
     </div>
 </nav>
 
-<div class="col-md-6">
-    {% for item in news %}
-    <div class="card mt-6">
-        <div class="card md-3">
-            <img src="https://www.digiseller.ru/preview/975862/p1_3114910_d8972daa.jpg" class="card-img-top" alt="1"
-                 width="120" , height="246">
+<div class="container mt-3">
+    <div class="col-md-12">
+        {% for item in news %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h6>Автор: {{ item.author }}</h6>
+                <h6>Категория: {{ item.category }}</h6>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <p class="card-text">{{ item.content }}</p>
-                <p class="card-text"><small class="text-body-secondary">{{ item.created_at }}</small></p>
+                <div class="media">
+                    {% if item.photo %}
+                    <img src="{{ item.photo.url }}" alt="" width="350"  height="235" class="mr-3">
+                    {% else %}
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVNcpW_lIC3ikCSRuX7cNXOrRsQVywz7taF1QWGvBw2bGqaWdW8Qpf2mSARcW4nt-uuCS-qQWpTQKOQNJ9PnrGGJIsimpwnmaA7OzJ_YSAqjZeo6sjC5L14CfS-f5vJrWrgen5Cxf1QU-FIk7dqNtOYc-yD28FsBGzZ-DH2IU13b38B5UZJj-Ys0k8/s1080/iscap%20c.jpg"
+                          alt="" width="350"  height="235" class="mr-3">
+                    {% endif %}
+                    <div class="media-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.content|truncatewords:50 }}</p>
+                        <a href="..." class="btn btn-primary">Read more...</a>
+                        <p class="card-text"><small class="text-body-secondary">{{ item.created_at }}</small></p>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
