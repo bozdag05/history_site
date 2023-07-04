@@ -7,14 +7,14 @@
     <h5>{{ title_category }}</h5>
     {% for item_category in categories %}
     <div class="list-group">
-        <a href="{% url 'category' item_category.pk %}" class="list-group-item list-group-item-action">{{ item_category.title }}</a>
+        <a href="/category/{{ item_category.pk }}" class="list-group-item list-group-item-action">{{ item_category.title }}</a>
     </div>
     {% endfor %}
     <br>
     <h5>{{ title_author }}</h5>
     {% for item_author in authors %}
     <div class="list-group">
-        <a href="{% url 'author' item_author.pk %}" class="list-group-item list-group-item-action">{{ item_author.name }}</a>
+        <a href="/author/{{ item_author.pk }}" class="list-group-item list-group-item-action">{{ item_author.name }}</a>
 
     </div>
     {% endfor %}
@@ -23,8 +23,7 @@
 
 {% block content %}
 <div class="col-md-8">
-    <h3>{{ title }}</h3>
-    {% for item in news %}
+    {% for item in author_news %}
     <div class="card mb-3">
         <div class="card-header">
             <h6>Автор: {{ item.author }}</h6>
