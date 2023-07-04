@@ -1,4 +1,6 @@
 from django.db import models
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 class News(models.Model):
@@ -11,6 +13,9 @@ class News(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='фото', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='публикация')
 
+    def get_absolute_url(self):
+        return reverse('view_news', kwargs={'news_id': self.pk})
+
     def __str__(self):
         return self.title
 
@@ -22,6 +27,9 @@ class News(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=0, verbose_name='Категория')
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id': self.pk})
 
     def __str__(self):
         return self.title
@@ -36,6 +44,9 @@ class Author(models.Model):
     biography = models.TextField(blank=True, null=True, verbose_name='Биография')
     data_birth = models.DateField(blank=True, null=True, verbose_name='дата рождения')
     data_death = models.DateField(blank=True, null=True, verbose_name='дата смерти')
+
+    def get_absolute_url(self):
+        return reverse('author', kwargs={'author_id': self.pk})
 
     def __str__(self):
         return self.name
