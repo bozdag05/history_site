@@ -1,16 +1,14 @@
-<div class="col-md-4">
-    <h5>{{ title_category }}</h5>
-    {% for item_category in categories %}
-    <div class="list-group">
-        <a href="{{ item_category.get_absolute_url }}" class="list-group-item list-group-item-action">{{ item_category.title }}</a>
-    </div>
-    {% endfor %}
-    <br>
-    <h5>{{ title_author }}</h5>
-    {% for item_author in authors %}
-    <div class="list-group">
-        <a href="{{ item_author.get_absolute_url }}" class="list-group-item list-group-item-action">{{ item_author.name }}</a>
-
-    </div>
-    {% endfor %}
+<h5>{{ title_category }}</h5>
+{% for item_category in categories %}
+<div class="list-group">
+    <a href="{{ item_category.get_absolute_url }}" class="list-group-item list-group-item-action">{{ item_category.title }}</a>
 </div>
+{% endfor %}
+<br>
+<h5>{{ title_author }}</h5>
+{% for item_author in authors %}
+<div class="list-group">
+    <a href="{{ item_author.get_absolute_url }}" class="list-group-item list-group-item-action">{{ item_author.name }}</a>
+
+</div>
+{% endfor %}
