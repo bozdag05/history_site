@@ -1,3 +1,4 @@
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -126,3 +127,4 @@ def test(request):
         'title': 'Test_Page',
     }
     return render(request, 'news/test.html', context=context)
+

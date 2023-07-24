@@ -3,9 +3,11 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
 
+
 class News(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
     author = models.ForeignKey('Author', on_delete=models.PROTECT, null=True,  verbose_name='Автор')
+
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
     content = models.TextField(blank=True, verbose_name='Контент')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата публикации')
@@ -13,8 +15,10 @@ class News(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='фото', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='публикация')
 
+
     def get_absolute_url(self):
         return reverse('view_news', kwargs={'news_id': self.pk})
+
 
     def __str__(self):
         return self.title
@@ -28,6 +32,7 @@ class News(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=0, verbose_name='Категория')
 
+
     def get_absolute_url(self):
         return reverse('category', kwargs={'category_id': self.pk})
 
@@ -37,6 +42,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
 
 
 class Author(models.Model):
@@ -54,3 +60,4 @@ class Author(models.Model):
     class Meta:
         verbose_name = 'Автор'
         verbose_name_plural = 'Авторы'
+
