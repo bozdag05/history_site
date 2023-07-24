@@ -1,7 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView
-
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
+from django.core.paginator import Paginator
 from .forms import NewsForm
 from .models import *
 
@@ -10,6 +12,7 @@ class HomeNews(ListView):
     model = News
     template_name = 'news/index.html'
     context_object_name = 'news'
+    paginate_by = 2
     allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -34,6 +37,7 @@ class CategoryNews(ListView):
     model = News
     template_name = 'news/category_news.html'
     context_object_name = 'category_news'
+    paginate_by = 2
     allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -68,6 +72,8 @@ class AuthorNews(ListView):
     model = News
     template_name = 'news/author_news.html'
     context_object_name = 'author_news'
+    paginate_by = 2
+    allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,12 +84,27 @@ class AuthorNews(ListView):
         return News.objects.filter(author_id=self.kwargs['author_id'], is_published=True)
 
 
-def view_news(request, news_id):
+class ViewNews(DetailView):
+    model = News
+    template_name = 'news/view_news.html'
+    context_object_name = 'item_news'
+    pk_url_kwarg = 'news_id'
+
+
+'''def view_news(request, news_id):
     item_news = get_object_or_404(News, pk=news_id)
     return render(request, template_name='news/view_news.html', context={'item_news': item_news})
+'''
 
 
-def add_news(request):
+class CreateNews(LoginRequiredMixin, CreateView):
+    form_class = NewsForm
+    template_name = 'news/add_news.html'
+    login_url = '/admin/'
+
+
+
+'''def add_news(request):
     if request.method == 'POST':
         forms = NewsForm(request.POST, request.FILES)
         if forms.is_valid():
@@ -92,4 +113,16 @@ def add_news(request):
             return redirect(news)
     else:
         forms = NewsForm()
-    return render(request, template_name='news/add_news.html', context={'forms': forms})
+    return render(request, template_name='news/add_news.html', context={'forms': forms})'''
+
+
+def test(request):
+    drf = News.objects.all()
+    paginator = Paginator(drf, 3)
+    page_num = request.GET.get('page', 1)
+    page_obj = paginator.page(page_num)
+    context = {
+        'page_obj': page_obj,
+        'title': 'Test_Page',
+    }
+    return render(request, 'news/test.html', context=context)
