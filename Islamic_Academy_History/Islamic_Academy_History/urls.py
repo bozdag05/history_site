@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 =======
 
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 <<<<<<< HEAD
@@ -30,6 +31,12 @@ urlpatterns = [
 =======
     path('captcha/', include('captcha.urls')),
 >>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
+=======
+    path('admin/', admin.site.urls, name='admin'),
+>>>>>>> 856e3e7712834bcb518773c85111e9e6b2c9396a
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('captcha/', include('captcha.urls')),
+>>>>>>> tik-001
     path('', include('news.urls')),
 
 ]

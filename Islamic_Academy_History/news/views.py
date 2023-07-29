@@ -1,6 +1,6 @@
 from django.contrib.auth import login, logout
-from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.paginator import Paginator
@@ -98,7 +98,6 @@ class ViewNews(DetailView):
 '''
 
 
-
 class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
@@ -128,7 +127,6 @@ def test(request):
         'title': 'Test_Page',
     }
     return render(request, 'news/test.html', context=context)
-
 
 
 def register(request):
