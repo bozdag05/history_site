@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'captcha',
     'news.apps.NewsConfig',
-    'movies.apps.Movies.Config',
+    'movies.apps.MoviesConfig',
 ]
 
 MIDDLEWARE = [
@@ -220,3 +220,4 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'django-caches'),
     }
+}
