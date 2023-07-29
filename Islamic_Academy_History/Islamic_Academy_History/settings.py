@@ -137,6 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+
 INTERNAL_IPS = ['127.0.0.1']
 
 
@@ -146,9 +147,6 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'muhammadosmanov02@gmail.com'
 EMAIL_HOST_PASSWORD = '50121241Mm'
-
-
-
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
@@ -214,6 +212,7 @@ CKEDITOR_CONFIGS = {
             'elementspath'
         ]),
     }
+
 }
 
 CACHES = {
@@ -221,4 +220,3 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'django-caches'),
     }
-}

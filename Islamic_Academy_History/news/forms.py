@@ -1,5 +1,4 @@
 import re
-
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.template.context_processors import media
@@ -67,7 +66,6 @@ class NewsForm(forms.ModelForm):
         if re.match(r'\d', title):
             raise ValidationError('Название не должно начинаться с цифры')
         return title
-
 
 class ContactForm(forms.Form):
     subject = forms.CharField(label='Тема письма', widget=forms.TextInput(attrs={'class': 'form-control'}))

@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-from django.contrib.auth import login, logout
-=======
 
->>>>>>> 856e3e7712834bcb518773c85111e9e6b2c9396a
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -104,6 +102,7 @@ class ViewNews(DetailView):
 '''
 
 
+
 class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
@@ -134,7 +133,7 @@ def test(request):
     }
     return render(request, 'news/test.html', context=context)
 
-<<<<<<< HEAD
+
 
 def register(request):
     if request.method == 'POST':
@@ -193,5 +192,3 @@ def user_callback(request):
         "form": form,
     }
     return render(request, 'news/test.html', context=context)
-=======
->>>>>>> 856e3e7712834bcb518773c85111e9e6b2c9396a
