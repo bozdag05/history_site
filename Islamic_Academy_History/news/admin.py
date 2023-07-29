@@ -20,6 +20,7 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content')
     list_editable = ('is_published',)
     list_filter = ('category', 'is_published', 'author')
+
     fields = ('title', 'author', 'category', 'content', 'photo', 'get_photo', 'is_published', 'created_at', 'updated_at',)
     readonly_fields = ('get_photo', 'created_at', 'updated_at',)
 
@@ -28,6 +29,7 @@ class NewsAdmin(admin.ModelAdmin):
             return mark_safe(f'<img src="{obj.photo.url}" width="75">')
 
     get_photo.short_description = 'Миниатюра'
+
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -49,3 +51,4 @@ admin.site.register(Author, AuthorAdmin)
 
 admin.site.site_title = 'Управление Академией'
 admin.site.site_header = 'Управление Академией'
+
