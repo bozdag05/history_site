@@ -23,9 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 =======
 
-    path('admin/', admin.site.urls, name='admin'),
+    path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+<<<<<<< HEAD
 >>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
+=======
+    path('captcha/', include('captcha.urls')),
+>>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
     path('', include('news.urls')),
 
 ]
