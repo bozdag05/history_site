@@ -1,37 +1,21 @@
 from django.db import models
-
-
-class Author(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Имя')
-    biography = models.TextField(blank=True, verbose_name='Биография')
-    data_birth = models.DateField(blank=True, verbose_name='дата рождения')
-    data_death = models.DateField(blank=True, verbose_name='дата смерти')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Автор'
-        verbose_name_plural = 'Авторы'
-
-    @classmethod
-    def default_author_pk(cls):
-        author, created = cls.objects.get_or_create(
-            name='History_lord',
-            defaults={}
-        )
-        return author.pk
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 class News(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название')
-    author = models.ForeignKey(Author, on_delete=models.SET_DEFAULT, null=True, default=Author.default_author_pk, verbose_name='Автор')
+    author = models.ForeignKey('Author', on_delete=models.PROTECT, null=True, verbose_name='Автор')
+
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
     content = models.TextField(blank=True, verbose_name='Контент')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата публикации')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата обновления')
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='фото', blank=True)
     is_published = models.BooleanField(default=False, verbose_name='публикация')
+
+    def get_absolute_url(self):
+        return reverse('view_news', kwargs={'news_id': self.pk})
 
     def __str__(self):
         return self.title
@@ -45,6 +29,9 @@ class News(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=0, verbose_name='Категория')
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id': self.pk})
+
     def __str__(self):
         return self.title
 
@@ -53,4 +40,18 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Имя')
+    biography = models.TextField(blank=True, null=True, verbose_name='Биография')
+    data_birth = models.DateField(blank=True, null=True, verbose_name='дата рождения')
+    data_death = models.DateField(blank=True, null=True, verbose_name='дата смерти')
 
+    def get_absolute_url(self):
+        return reverse('author', kwargs={'author_id': self.pk})
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Автор'
+        verbose_name_plural = 'Авторы'

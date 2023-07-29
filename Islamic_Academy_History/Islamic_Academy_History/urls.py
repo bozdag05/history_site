@@ -19,7 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
+=======
+
+    path('admin/', admin.site.urls, name='admin'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+>>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
     path('', include('news.urls')),
 
 ]

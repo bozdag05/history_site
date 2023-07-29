@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="ru">
 <head>
@@ -52,3 +53,42 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+=======
+
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <h3>{{ title }}</h3>
+    {% for item in news %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <h6>Автор: {{ item.author }}</h6>
+            <h6>Категория: {{ item.category }}</h6>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if item.photo %}
+                <img src="{{ item.photo.url }}" alt="" width="350" height="235" class="mr-3">
+                {% else %}
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVNcpW_lIC3ikCSRuX7cNXOrRsQVywz7taF1QWGvBw2bGqaWdW8Qpf2mSARcW4nt-uuCS-qQWpTQKOQNJ9PnrGGJIsimpwnmaA7OzJ_YSAqjZeo6sjC5L14CfS-f5vJrWrgen5Cxf1QU-FIk7dqNtOYc-yD28FsBGzZ-DH2IU13b38B5UZJj-Ys0k8/s1080/iscap%20c.jpg"
+                     alt="" width="350" height="235" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.content|truncatewords:50 }}</p>
+                    <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+                    <p class="card-text"><small class="text-body-secondary">{{ item.created_at }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+>>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
