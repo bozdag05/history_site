@@ -1,11 +1,15 @@
 
+from django.contrib.auth import login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.paginator import Paginator
-from .forms import NewsForm
+from django.contrib import messages
+from .forms import NewsForm, UserRegisterForm, UserAuthenticationForm, ContactForm
 from .models import *
 
 
@@ -98,6 +102,7 @@ class ViewNews(DetailView):
 '''
 
 
+
 class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
@@ -128,3 +133,62 @@ def test(request):
     }
     return render(request, 'news/test.html', context=context)
 
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, 'Вы успешно зарегистрировались')
+            return redirect('home')
+        else:
+            messages.error(request, 'Ошибка регистрации')
+    else:
+        form = UserRegisterForm()
+
+    context = {
+        'form': form,
+    }
+    return render(request, template_name='news/register.html', context=context)
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserAuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserAuthenticationForm()
+
+    context = {
+        'form': form,
+    }
+    return render(request, template_name='news/login.html', context=context)
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+
+def user_callback(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], 'muhammadosmanov02@gmail.com', ['osmanov28092005@gmail.com'], fail_silently=False)
+            if mail:
+                messages.success(request, 'Сообщение успешно отправленно')
+                return redirect('callback')
+            else:
+                messages.error(request, 'Ошибка при отправке сообщения')
+    else:
+        form = ContactForm()
+
+    context = {
+        "form": form,
+    }
+    return render(request, 'news/test.html', context=context)
