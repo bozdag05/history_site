@@ -7,9 +7,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if request.user.is_superuser %}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="admin/">Админка</a>
                 </li>
+                {% endif %}
+
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add_news' %}">добавить новость</a>
@@ -21,5 +24,14 @@
                 <button class="btn btn-outline-success" type="submit">Поиск</button>
             </form>
         </div>
+        <pre>   </pre>
+        <span class="navbar-text">
+            {% if request.user.is_authenticated %}
+            {{ user.username }} ,السلام عليكم | <a href="{% url 'logout' %}">Выход</a>
+            {% else %}
+            <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </span>
+
     </div>
 </nav>

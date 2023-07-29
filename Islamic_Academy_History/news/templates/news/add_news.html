@@ -10,7 +10,7 @@
 <h1>Добавить новость</h1>
 <form action="{% url 'add_news' %}" method="post" >
     {% csrf_token %}
-    {{ forms.as_p }}
+    {{ form.as_p }}
     <button type="submit" class="btn btn-primary btn-block">Добавить новость</button>
 
 </form>

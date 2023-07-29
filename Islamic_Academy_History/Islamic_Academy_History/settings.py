@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'captcha',
     'news.apps.NewsConfig',
+    'movies.apps.Movies.Config',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+INTERNAL_IPS = ['127.0.0.1']
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'muhammadosmanov02@gmail.com'
+EMAIL_HOST_PASSWORD = '50121241Mm'
+
+
+
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
@@ -193,5 +207,12 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath'
         ]),
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django-caches'),
     }
 }
