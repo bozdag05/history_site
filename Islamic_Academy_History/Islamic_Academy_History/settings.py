@@ -127,14 +127,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
 
 
@@ -145,8 +142,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'muhammadosmanov02@gmail.com'
-EMAIL_HOST_PASSWORD = '50121241Mm'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
