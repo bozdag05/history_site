@@ -169,8 +169,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'muhammadosmanov02@gmail.com'
-EMAIL_HOST_PASSWORD = '50121241Mm'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 <<<<<<< HEAD
 >>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
 =======
