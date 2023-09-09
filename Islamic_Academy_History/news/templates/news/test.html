@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
 
-<<<<<<< HEAD
+
 
 {% block title %} Callback {% endblock %}
 
-
-=======
-{% block title %} Callback {% endblock %}
-
->>>>>>> tik-001
 {% block sidebar %}
 {% include 'inc/_sidebar.html' %}
 {% endblock %}
 
 {% block content %}
-<<<<<<< HEAD
 
-=======
->>>>>>> tik-001
 <h1>Callback</h1>
 <form  method="post" >
     {% csrf_token %}
@@ -25,9 +17,8 @@
     <button type="submit" class="btn btn-primary btn-block">Отправить</button>
 
 </form>
-<<<<<<< HEAD
-{% endblock %}
-=======
+
+
 
     {% for item in page_obj %}
     <div class="card mb-3">
@@ -67,6 +58,6 @@
 </nav>
 
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> tik-001
+
+
+

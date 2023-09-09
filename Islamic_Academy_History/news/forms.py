@@ -1,8 +1,5 @@
 import re
-<<<<<<< HEAD
-=======
 
->>>>>>> tik-001
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.template.context_processors import media
@@ -71,15 +68,10 @@ class NewsForm(forms.ModelForm):
             raise ValidationError('Название не должно начинаться с цифры')
         return title
 
-<<<<<<< HEAD
-class ContactForm(forms.Form):
-    subject = forms.CharField(label='Тема письма', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    content = forms.CharField(label='Сообщение', widget=forms.Textarea(attrs={"class": "form-control"}))
-    captcha = CaptchaField()
-=======
 
 class ContactForm(forms.Form):
     subject = forms.CharField(label='Тема письма', widget=forms.TextInput(attrs={'class': 'form-control'}))
     content = forms.CharField(label='Сообщение', widget=forms.Textarea(attrs={"class": "form-control"}))
     captcha = CaptchaField()
->>>>>>> tik-001
+
+

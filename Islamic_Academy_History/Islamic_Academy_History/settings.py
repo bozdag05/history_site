@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'captcha',
     'news.apps.NewsConfig',
-    'movies.apps.Movies.Config',
+    'movies.apps.MoviesConfig',
 ]
 
 MIDDLEWARE = [
@@ -109,16 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-
->>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
-=======
-
-
->>>>>>> tik-001
 LANGUAGE_CODE = 'ru'
 
 
@@ -135,33 +126,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> tik-001
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
-<<<<<<< HEAD
->>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
-=======
->>>>>>> tik-001
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
-=======
->>>>>>> tik-001
 INTERNAL_IPS = ['127.0.0.1']
 
 
@@ -171,13 +151,6 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-<<<<<<< HEAD
->>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
-=======
-
-
-
->>>>>>> tik-001
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
@@ -243,23 +216,17 @@ CKEDITOR_CONFIGS = {
             'elementspath'
         ]),
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
->>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
-=======
 
-=======
->>>>>>> tik-001
 }
+
+
 
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'django-caches'),
     }
-<<<<<<< HEAD
->>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
-=======
+
 }
->>>>>>> tik-001
+
+

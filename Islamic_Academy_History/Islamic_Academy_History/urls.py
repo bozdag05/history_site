@@ -19,24 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('admin/', admin.site.urls),
-=======
 
-<<<<<<< HEAD
+
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-<<<<<<< HEAD
->>>>>>> abbc309199e5261d66b9e8cbdca1a0d2f0ddf2b9
-=======
     path('captcha/', include('captcha.urls')),
->>>>>>> 081e3d03868f55007fcff3b2ebc9530fc003cab5
-=======
-    path('admin/', admin.site.urls, name='admin'),
->>>>>>> 856e3e7712834bcb518773c85111e9e6b2c9396a
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('captcha/', include('captcha.urls')),
->>>>>>> tik-001
     path('', include('news.urls')),
 
 ]
