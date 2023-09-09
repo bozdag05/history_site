@@ -1,4 +1,6 @@
 from django.contrib.auth import login, logout
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
@@ -188,3 +190,4 @@ def user_callback(request):
         "form": form,
     }
     return render(request, 'news/test.html', context=context)
+

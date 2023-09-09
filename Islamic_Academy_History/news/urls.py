@@ -13,5 +13,4 @@ urlpatterns = [
     path('news/register', register, name='register'),
     path('news/login', user_login, name='login'),
     path('news/logout', user_logout, name='logout'),
-
 ]
